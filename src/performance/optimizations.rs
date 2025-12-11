@@ -449,11 +449,10 @@ mod tests {
     fn test_memory_optimized_similarity() {
         let processor = OptimizedRuleProcessor::new();
 
-        assert!((
-            processor.calculate_similarity_memory_optimized("hello", "hello") - 1.0
-        )
-            .abs()
-            < f64::EPSILON);
+        assert!(
+            (processor.calculate_similarity_memory_optimized("hello", "hello") - 1.0).abs()
+                < f64::EPSILON
+        );
         // "hello" and "world" have no matching characters at same positions
         let similarity = processor.calculate_similarity_memory_optimized("hello", "world");
         assert!(similarity >= 0.0);

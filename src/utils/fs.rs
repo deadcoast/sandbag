@@ -35,7 +35,6 @@ impl FSUtils {
 
     /// Check if file has a specific extension
     pub fn has_extension(path: &Path, extension: &str) -> bool {
-        Self::get_file_extension(path)
-            .is_some_and(|ext| ext == extension.to_lowercase())
+        Self::get_file_extension(path).is_some_and(|ext| ext == extension.to_lowercase())
     }
 }

@@ -42,7 +42,12 @@ pub fn diff_ast(old: &ASTNode, new: &ASTNode) -> Vec<AstChange> {
     changes
 }
 
-fn diff_node_recursive(old: &ASTNode, new: &ASTNode, path: &mut Vec<String>, out: &mut Vec<AstChange>) {
+fn diff_node_recursive(
+    old: &ASTNode,
+    new: &ASTNode,
+    path: &mut Vec<String>,
+    out: &mut Vec<AstChange>,
+) {
     match (&old.node_type, &new.node_type) {
         (NodeType::Object, NodeType::Object) => diff_object(old, new, path, out),
         (NodeType::Array, NodeType::Array) => diff_array(old, new, path, out),
@@ -72,14 +77,21 @@ fn diff_object(old: &ASTNode, new: &ASTNode, path: &mut Vec<String>, out: &mut V
             diff_node_recursive(old_v, new_v, path, out);
             path.pop();
         } else {
-            out.push(AstChange::Remove { path: path.clone(), key: k.clone() });
+            out.push(AstChange::Remove {
+                path: path.clone(),
+                key: k.clone(),
+            });
         }
     }
 
     // insertions
     for (k, new_v) in &new_map {
         if !old_map.contains_key(k) {
-            out.push(AstChange::Insert { path: path.clone(), key: k.clone(), value: new_v.clone() });
+            out.push(AstChange::Insert {
+                path: path.clone(),
+                key: k.clone(),
+                value: new_v.clone(),
+            });
         }
     }
 }
@@ -99,12 +111,19 @@ fn diff_array(old: &ASTNode, new: &ASTNode, path: &mut Vec<String>, out: &mut Ve
     match len_old.cmp(&len_new) {
         std::cmp::Ordering::Greater => {
             for i in len_new..len_old {
-                out.push(AstChange::Remove { path: path.clone(), key: i.to_string() });
+                out.push(AstChange::Remove {
+                    path: path.clone(),
+                    key: i.to_string(),
+                });
             }
         }
         std::cmp::Ordering::Less => {
             for i in len_old..len_new {
-                out.push(AstChange::Insert { path: path.clone(), key: i.to_string(), value: new.children[i].clone() });
+                out.push(AstChange::Insert {
+                    path: path.clone(),
+                    key: i.to_string(),
+                    value: new.children[i].clone(),
+                });
             }
         }
         std::cmp::Ordering::Equal => {}
@@ -131,19 +150,50 @@ mod tests {
     use crate::config::{ASTNode, NodeType};
 
     fn kv(key: &str, value: &str) -> ASTNode {
-        let k = ASTNode { node_type: NodeType::Key, value: Some(key.to_string()), children: vec![], metadata: std::collections::HashMap::default() };
-        let v = ASTNode { node_type: NodeType::Value, value: Some(value.to_string()), children: vec![], metadata: std::collections::HashMap::default() };
-        ASTNode { node_type: NodeType::KeyValue, value: None, children: vec![k, v], metadata: std::collections::HashMap::default() }
+        let k = ASTNode {
+            node_type: NodeType::Key,
+            value: Some(key.to_string()),
+            children: vec![],
+            metadata: std::collections::HashMap::default(),
+        };
+        let v = ASTNode {
+            node_type: NodeType::Value,
+            value: Some(value.to_string()),
+            children: vec![],
+            metadata: std::collections::HashMap::default(),
+        };
+        ASTNode {
+            node_type: NodeType::KeyValue,
+            value: None,
+            children: vec![k, v],
+            metadata: std::collections::HashMap::default(),
+        }
     }
 
     #[test]
     fn test_diff_object_insert_update_remove() {
-        let old = ASTNode { node_type: NodeType::Object, value: None, children: vec![kv("a", "1"), kv("b", "2")], metadata: std::collections::HashMap::default() };
-        let new = ASTNode { node_type: NodeType::Object, value: None, children: vec![kv("a", "10"), kv("c", "3")], metadata: std::collections::HashMap::default() };
+        let old = ASTNode {
+            node_type: NodeType::Object,
+            value: None,
+            children: vec![kv("a", "1"), kv("b", "2")],
+            metadata: std::collections::HashMap::default(),
+        };
+        let new = ASTNode {
+            node_type: NodeType::Object,
+            value: None,
+            children: vec![kv("a", "10"), kv("c", "3")],
+            metadata: std::collections::HashMap::default(),
+        };
 
         let changes = diff_ast(&old, &new);
-        assert!(changes.iter().any(|c| matches!(c, AstChange::Update { key, .. } if key.is_empty())));
-        assert!(changes.iter().any(|c| matches!(c, AstChange::Remove { key, .. } if key == "b")));
-        assert!(changes.iter().any(|c| matches!(c, AstChange::Insert { key, .. } if key == "c")));
+        assert!(changes
+            .iter()
+            .any(|c| matches!(c, AstChange::Update { key, .. } if key.is_empty())));
+        assert!(changes
+            .iter()
+            .any(|c| matches!(c, AstChange::Remove { key, .. } if key == "b")));
+        assert!(changes
+            .iter()
+            .any(|c| matches!(c, AstChange::Insert { key, .. } if key == "c")));
     }
 }

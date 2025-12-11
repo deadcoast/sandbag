@@ -2,13 +2,13 @@
 
 use crate::config::{ASTNode, ConfigAST, ConfigFormat, ConfigMetadata, NodeType, SerializeError};
 use anyhow::Result;
-use std::collections::HashMap;
-use std::path::Path;
-use std::fs;
-use std::io::Write as _;
 use chrono::{DateTime, Utc};
 use serde_json::Value as JsonValue;
 use serde_yaml::Value as YamlValue;
+use std::collections::HashMap;
+use std::fs;
+use std::io::Write as _;
+use std::path::Path;
 use toml::Value as TomlValue;
 
 /// Configuration writer trait
@@ -57,20 +57,22 @@ impl ConfigWriter for FileConfigWriter {
         };
 
         let mut file = fs::File::create(path).map_err(SerializeError::IoError)?;
-        file.write_all(content.as_bytes()).map_err(SerializeError::IoError)?;
+        file.write_all(content.as_bytes())
+            .map_err(SerializeError::IoError)?;
         Ok(())
     }
 
-    fn read_config(
-        &self,
-        path: &Path,
-        format: ConfigFormat,
-    ) -> Result<ConfigAST, SerializeError> {
+    fn read_config(&self, path: &Path, format: ConfigFormat) -> Result<ConfigAST, SerializeError> {
         let content = fs::read_to_string(path).map_err(SerializeError::IoError)?;
         let metadata = ConfigMetadata {
             format: format.clone(),
             file_path: path.to_string_lossy().to_string(),
-            last_modified: Some(DateTime::<Utc>::from(fs::metadata(path).map_err(SerializeError::IoError)?.modified().unwrap_or_else(|_| std::time::SystemTime::now()))),
+            last_modified: Some(DateTime::<Utc>::from(
+                fs::metadata(path)
+                    .map_err(SerializeError::IoError)?
+                    .modified()
+                    .unwrap_or_else(|_| std::time::SystemTime::now()),
+            )),
             backup_count: 0,
         };
 
@@ -95,7 +97,11 @@ impl ConfigWriter for FileConfigWriter {
             },
         };
 
-        Ok(ConfigAST { format, root, metadata })
+        Ok(ConfigAST {
+            format,
+            root,
+            metadata,
+        })
     }
 }
 
@@ -104,21 +110,66 @@ fn toml_to_ast(value: &TomlValue) -> ASTNode {
         TomlValue::Table(map) => {
             let mut children = Vec::new();
             for (k, v) in map {
-                let key = ASTNode { node_type: NodeType::Key, value: Some(k.clone()), children: vec![], metadata: HashMap::new() };
+                let key = ASTNode {
+                    node_type: NodeType::Key,
+                    value: Some(k.clone()),
+                    children: vec![],
+                    metadata: HashMap::new(),
+                };
                 let val = toml_to_ast(v);
-                children.push(ASTNode { node_type: NodeType::KeyValue, value: None, children: vec![key, val], metadata: HashMap::new() });
+                children.push(ASTNode {
+                    node_type: NodeType::KeyValue,
+                    value: None,
+                    children: vec![key, val],
+                    metadata: HashMap::new(),
+                });
             }
-            ASTNode { node_type: NodeType::Object, value: None, children, metadata: HashMap::new() }
+            ASTNode {
+                node_type: NodeType::Object,
+                value: None,
+                children,
+                metadata: HashMap::new(),
+            }
         }
         TomlValue::Array(arr) => {
             let children = arr.iter().map(toml_to_ast).collect();
-            ASTNode { node_type: NodeType::Array, value: None, children, metadata: HashMap::new() }
+            ASTNode {
+                node_type: NodeType::Array,
+                value: None,
+                children,
+                metadata: HashMap::new(),
+            }
         }
-        TomlValue::String(s) => ASTNode { node_type: NodeType::Value, value: Some(s.clone()), children: vec![], metadata: HashMap::new() },
-        TomlValue::Integer(n) => ASTNode { node_type: NodeType::Value, value: Some(n.to_string()), children: vec![], metadata: HashMap::new() },
-        TomlValue::Float(n) => ASTNode { node_type: NodeType::Value, value: Some(n.to_string()), children: vec![], metadata: HashMap::new() },
-        TomlValue::Boolean(b) => ASTNode { node_type: NodeType::Value, value: Some(b.to_string()), children: vec![], metadata: HashMap::new() },
-        TomlValue::Datetime(dt) => ASTNode { node_type: NodeType::Value, value: Some(dt.to_string()), children: vec![], metadata: HashMap::new() },
+        TomlValue::String(s) => ASTNode {
+            node_type: NodeType::Value,
+            value: Some(s.clone()),
+            children: vec![],
+            metadata: HashMap::new(),
+        },
+        TomlValue::Integer(n) => ASTNode {
+            node_type: NodeType::Value,
+            value: Some(n.to_string()),
+            children: vec![],
+            metadata: HashMap::new(),
+        },
+        TomlValue::Float(n) => ASTNode {
+            node_type: NodeType::Value,
+            value: Some(n.to_string()),
+            children: vec![],
+            metadata: HashMap::new(),
+        },
+        TomlValue::Boolean(b) => ASTNode {
+            node_type: NodeType::Value,
+            value: Some(b.to_string()),
+            children: vec![],
+            metadata: HashMap::new(),
+        },
+        TomlValue::Datetime(dt) => ASTNode {
+            node_type: NodeType::Value,
+            value: Some(dt.to_string()),
+            children: vec![],
+            metadata: HashMap::new(),
+        },
     }
 }
 
@@ -140,9 +191,15 @@ fn ast_to_toml(node: &ASTNode) -> TomlValue {
         NodeType::Array => TomlValue::Array(node.children.iter().map(ast_to_toml).collect()),
         NodeType::Value => {
             if let Some(ref v) = node.value {
-                if let Ok(b) = v.parse::<bool>() { return TomlValue::Boolean(b); }
-                if let Ok(i) = v.parse::<i64>() { return TomlValue::Integer(i); }
-                if let Ok(f) = v.parse::<f64>() { return TomlValue::Float(f); }
+                if let Ok(b) = v.parse::<bool>() {
+                    return TomlValue::Boolean(b);
+                }
+                if let Ok(i) = v.parse::<i64>() {
+                    return TomlValue::Integer(i);
+                }
+                if let Ok(f) = v.parse::<f64>() {
+                    return TomlValue::Float(f);
+                }
                 TomlValue::String(v.clone())
             } else {
                 TomlValue::String(String::new())
