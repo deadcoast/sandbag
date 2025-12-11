@@ -110,7 +110,10 @@ impl ConfigManager {
     }
 
     /// Check if file exists and is readable
-    pub async fn check_file_access<P: AsRef<Path>>(&self, file_path: P) -> Result<bool, std::io::Error> {
+    pub async fn check_file_access<P: AsRef<Path>>(
+        &self,
+        file_path: P,
+    ) -> Result<bool, std::io::Error> {
         Ok(fs::metadata(file_path.as_ref()).await.is_ok())
     }
 
@@ -133,8 +136,10 @@ impl ConfigManager {
         let default_content = match format {
             ConfigFormat::Json => "{\n  \n}\n",
             // Same default content for non-JSON formats for now
-            ConfigFormat::Yaml | ConfigFormat::Toml | ConfigFormat::Ini | ConfigFormat::Custom(_) =>
-                "# Configuration file\n\n",
+            ConfigFormat::Yaml
+            | ConfigFormat::Toml
+            | ConfigFormat::Ini
+            | ConfigFormat::Custom(_) => "# Configuration file\n\n",
         };
 
         fs::write(file_path.as_ref(), default_content).await

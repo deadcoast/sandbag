@@ -1,7 +1,7 @@
 //! Interactive user interface components
 
-use dialoguer::{Confirm, Input, Select};
 use anyhow::Result;
+use dialoguer::{Confirm, Input, Select};
 
 /// Interactive prompt manager
 pub struct InteractiveManager;

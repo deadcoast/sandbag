@@ -1,7 +1,7 @@
 //! Unit tests for rule extraction engine
 
 use sandbag::core::rule_extractor::RuleExtractor;
-use sandbag::core::{RuleMatch, ConfigAction, Severity};
+use sandbag::core::{ConfigAction, RuleMatch, Severity};
 
 #[tokio::test]
 async fn test_markdownlint_rule_extraction() {
@@ -31,7 +31,11 @@ async fn test_rule_extraction_with_multiple_patterns() {
 
     for input in inputs {
         let results = extractor.extract_rules(input).await.unwrap();
-        assert!(!results.is_empty(), "Failed to extract rule from: {}", input);
+        assert!(
+            !results.is_empty(),
+            "Failed to extract rule from: {}",
+            input
+        );
         assert_eq!(results[0].rule_id, "MD033");
     }
 }
@@ -41,8 +45,12 @@ async fn test_rule_extraction_confidence_scoring() {
     let extractor = RuleExtractor::new();
 
     // Test high confidence input
-    let high_confidence_input = "MD033/no-inline-html: Inline HTML [Element: summary]markdownlintMD033";
-    let high_results = extractor.extract_rules(high_confidence_input).await.unwrap();
+    let high_confidence_input =
+        "MD033/no-inline-html: Inline HTML [Element: summary]markdownlintMD033";
+    let high_results = extractor
+        .extract_rules(high_confidence_input)
+        .await
+        .unwrap();
 
     // Test low confidence input
     let low_confidence_input = "Some random text that might contain MD033";
@@ -65,7 +73,10 @@ async fn test_rule_extraction_empty_input() {
 async fn test_rule_extraction_invalid_input() {
     let extractor = RuleExtractor::new();
 
-    let results = extractor.extract_rules("This is not a linter output").await.unwrap();
+    let results = extractor
+        .extract_rules("This is not a linter output")
+        .await
+        .unwrap();
     assert!(results.is_empty());
 }
 

@@ -2,10 +2,10 @@
 
 pub mod backup;
 pub mod conflict_resolution;
+pub mod diff;
 pub mod manager;
 pub mod parser;
 pub mod writer;
-pub mod diff;
 
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
