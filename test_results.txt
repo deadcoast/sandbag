@@ -1,0 +1,714 @@
+   Compiling sandbag v0.1.0 (/Users/deadcoast/sandbag)
+warning: unused import: `ConfigFormat`
+ --> src/config/conflict_resolution.rs:3:32
+  |
+3 | use crate::config::{ConfigAST, ConfigFormat};
+  |                                ^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `RuleMatch`
+ --> src/config/conflict_resolution.rs:4:59
+  |
+4 | use crate::core::{ConfigAction, ConfigEntry, ConfigScope, RuleMatch};
+  |                                                           ^^^^^^^^^
+
+warning: unused import: `ConfigAST`
+ --> src/config/manager.rs:3:33
+  |
+3 | use crate::config::{ApplyError, ConfigAST, ConfigFormat, ConfigParser, ParseError};
+  |                                 ^^^^^^^^^
+
+warning: unused imports: `ConfigAction` and `ConfigScope`
+   --> src/config/manager.rs:165:23
+    |
+165 |     use crate::core::{ConfigAction, ConfigScope};
+    |                       ^^^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+   --> src/config/manager.rs:166:9
+    |
+166 |     use std::collections::HashMap;
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Severity`
+ --> src/core/confidence.rs:3:48
+  |
+3 | use crate::core::{RuleMatch, ExtractedContext, Severity};
+  |                                                ^^^^^^^^
+
+warning: unused import: `RuleMatch`
+ --> src/core/semantic_analysis.rs:3:59
+  |
+3 | use crate::core::{ConfigAction, ConfigEntry, ConfigScope, RuleMatch};
+  |                                                           ^^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/core/semantic_analysis.rs:4:5
+  |
+4 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `HashSet`
+ --> src/core/semantic_analysis.rs:5:33
+  |
+5 | use std::collections::{HashMap, HashSet};
+  |                                 ^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/linters/eslint.rs:5:5
+  |
+5 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `ConfigEntry` and `ConfigScope`
+ --> src/linters/markdownlint.rs:3:33
+  |
+3 | use crate::core::{ConfigAction, ConfigEntry, ConfigScope, ExtractedContext, RuleMatch, Severity};
+  |                                 ^^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused import: `chrono::Utc`
+ --> src/linters/markdownlint.rs:5:5
+  |
+5 | use chrono::Utc;
+  |     ^^^^^^^^^^^
+
+warning: unused imports: `ConfigAction`, `ConfigEntry`, and `ConfigScope`
+ --> src/linters/plugin_architecture.rs:3:19
+  |
+3 | use crate::core::{ConfigAction, ConfigEntry, ConfigScope, RuleMatch};
+  |                   ^^^^^^^^^^^^  ^^^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused imports: `ConfigAction`, `ExtractedContext`, and `Severity`
+ --> src/linters/mod.rs:8:19
+  |
+8 | use crate::core::{ConfigAction, ExtractedContext, RuleMatch, Severity};
+  |                   ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^             ^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/linters/mod.rs:9:5
+  |
+9 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `crate::core::similarity::SimilarityAnalyzer`
+ --> src/performance/optimizations.rs:4:5
+  |
+4 | use crate::core::similarity::SimilarityAnalyzer;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/performance/optimizations.rs:6:5
+  |
+6 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `ConfigEntry`
+ --> src/performance/mod.rs:5:19
+  |
+5 | use crate::core::{ConfigEntry, RuleMatch};
+  |                   ^^^^^^^^^^^
+
+warning: unused import: `Args`
+ --> src/ui/cli.rs:5:12
+  |
+5 | use clap::{Args, Parser, Subcommand};
+  |            ^^^^
+
+warning: unused import: `style`
+ --> src/ui/display.rs:3:21
+  |
+3 | use console::{Term, style};
+  |                     ^^^^^
+
+warning: unused import: `std::time::Duration`
+ --> src/ui/display.rs:4:5
+  |
+4 | use std::time::Duration;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `ConflictSeverity` and `Conflict`
+ --> src/ui/enhanced_cli.rs:3:42
+  |
+3 | use crate::config::conflict_resolution::{Conflict, ConflictResolver, ConflictSeverity};
+  |                                          ^^^^^^^^                    ^^^^^^^^^^^^^^^^
+
+warning: unused import: `Style`
+ --> src/ui/enhanced_cli.rs:9:15
+  |
+9 | use console::{Style, Term};
+  |               ^^^^^
+
+warning: unused imports: `Input`, `MultiSelect`, and `Select`
+  --> src/ui/enhanced_cli.rs:10:26
+   |
+10 | use dialoguer::{Confirm, Input, MultiSelect, Select};
+   |                          ^^^^^  ^^^^^^^^^^^  ^^^^^^
+
+warning: unused import: `anyhow::Result`
+  --> src/ui/mod.rs:11:5
+   |
+11 | use anyhow::Result;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused import: `PathBuf`
+ --> src/utils/fs.rs:3:23
+  |
+3 | use std::path::{Path, PathBuf};
+  |                       ^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/utils/validation.rs:5:5
+  |
+5 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `anyhow::Result`
+ --> src/utils/mod.rs:6:5
+  |
+6 | use anyhow::Result;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `std::path::Path`
+ --> src/utils/mod.rs:7:5
+  |
+7 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+
+warning: unused variable: `file_path`
+   --> src/config/manager.rs:156:9
+    |
+156 |         file_path: &Path,
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_file_path`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `linter`
+   --> src/ui/cli.rs:199:9
+    |
+199 |         linter: Option<String>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_linter`
+
+warning: unused variable: `config`
+   --> src/ui/cli.rs:200:9
+    |
+200 |         config: Option<PathBuf>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_config`
+
+warning: unused variable: `limit`
+   --> src/ui/cli.rs:244:9
+    |
+244 |         limit: usize,
+    |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_limit`
+
+warning: unused variable: `include_low_confidence`
+   --> src/ui/cli.rs:245:9
+    |
+245 |         include_low_confidence: bool,
+    |         ^^^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_include_low_confidence`
+
+warning: unused variable: `continue_on_error`
+   --> src/ui/cli.rs:264:9
+    |
+264 |         continue_on_error: bool,
+    |         ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_continue_on_error`
+
+warning: unused variable: `output`
+   --> src/ui/cli.rs:265:9
+    |
+265 |         output: Option<PathBuf>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_output`
+
+warning: unused variable: `config_file`
+   --> src/ui/cli.rs:297:17
+    |
+297 |                 config_file,
+    |                 ^^^^^^^^^^^ help: try ignoring the field: `config_file: _`
+
+warning: unused variable: `linter`
+   --> src/ui/cli.rs:332:54
+    |
+332 |     async fn handle_info(&mut self, rule_id: String, linter: Option<String>) -> Result<()> {
+    |                                                      ^^^^^^ help: if this is intentional, prefix it with an underscore: `_linter`
+
+warning: unused variable: `linter`
+   --> src/ui/enhanced_cli.rs:150:9
+    |
+150 |         linter: Option<String>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_linter`
+
+warning: unused variable: `config`
+   --> src/ui/enhanced_cli.rs:151:9
+    |
+151 |         config: Option<std::path::PathBuf>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_config`
+
+warning: unused variable: `scan_path`
+   --> src/ui/enhanced_cli.rs:198:13
+    |
+198 |         let scan_path = path.unwrap_or_else(|| {
+    |             ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_scan_path`
+
+warning: unused variable: `input_file`
+   --> src/ui/enhanced_cli.rs:224:9
+    |
+224 |         input_file: std::path::PathBuf,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_input_file`
+
+warning: unused variable: `continue_on_error`
+   --> src/ui/enhanced_cli.rs:225:9
+    |
+225 |         continue_on_error: bool,
+    |         ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_continue_on_error`
+
+warning: unused variable: `output`
+   --> src/ui/enhanced_cli.rs:226:9
+    |
+226 |         output: Option<std::path::PathBuf>,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_output`
+
+warning: unused variable: `input`
+   --> src/ui/enhanced_cli.rs:319:49
+    |
+319 |     async fn extract_rules_with_progress(&self, input: &str) -> Result<Vec<RuleMatch>> {
+    |                                                 ^^^^^ help: if this is intentional, prefix it with an underscore: `_input`
+
+warning: unused import: `rayon::prelude`
+ --> src/performance/optimizations.rs:7:5
+  |
+7 | use rayon::prelude::*;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused variable: `ast`
+   --> src/config/conflict_resolution.rs:125:38
+    |
+125 |     fn extract_rules_from_ast(&self, ast: &ConfigAST) -> Vec<ConfigEntry> {
+    |                                      ^^^ help: if this is intentional, prefix it with an underscore: `_ast`
+
+warning: unused variable: `rules`
+   --> src/config/conflict_resolution.rs:239:43
+    |
+239 |     fn check_circular_dependencies(&self, rules: &[ConfigEntry]) -> Vec<Conflict> {
+    |                                           ^^^^^ help: if this is intentional, prefix it with an underscore: `_rules`
+
+warning: unused variable: `conflict`
+   --> src/config/conflict_resolution.rs:316:42
+    |
+316 |     fn resolve_keep_most_specific(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                          ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_conflict`
+
+warning: unused variable: `ast`
+   --> src/config/conflict_resolution.rs:316:63
+    |
+316 |     fn resolve_keep_most_specific(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                                               ^^^ help: if this is intentional, prefix it with an underscore: `_ast`
+
+warning: unused variable: `conflict`
+   --> src/config/conflict_resolution.rs:322:35
+    |
+322 |     fn resolve_merge_rules(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                   ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_conflict`
+
+warning: unused variable: `ast`
+   --> src/config/conflict_resolution.rs:322:56
+    |
+322 |     fn resolve_merge_rules(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                                        ^^^ help: if this is intentional, prefix it with an underscore: `_ast`
+
+warning: unused variable: `conflict`
+   --> src/config/conflict_resolution.rs:328:42
+    |
+328 |     fn resolve_remove_conflicting(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                          ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_conflict`
+
+warning: unused variable: `ast`
+   --> src/config/conflict_resolution.rs:328:63
+    |
+328 |     fn resolve_remove_conflicting(&self, conflict: &Conflict, ast: &mut ConfigAST) -> Result<()> {
+    |                                                               ^^^ help: if this is intentional, prefix it with an underscore: `_ast`
+
+warning: unused variable: `result`
+   --> src/core/advanced_similarity.rs:562:13
+    |
+562 |         let result = state.observe_evidence("MD033: Inline HTML");
+    |             ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: unused variable: `features`
+   --> src/core/semantic_analysis.rs:498:9
+    |
+498 |         features: &[ClusteringFeature],
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_features`
+
+warning: unused variable: `clusters`
+   --> src/core/semantic_analysis.rs:499:9
+    |
+499 |         clusters: &[RuleCluster],
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_clusters`
+
+warning: unused variable: `clusters`
+   --> src/core/semantic_analysis.rs:508:9
+    |
+508 |         clusters: &[RuleCluster],
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_clusters`
+
+warning: unused variable: `ontology`
+   --> src/core/semantic_analysis.rs:509:9
+    |
+509 |         ontology: &LinterOntology,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ontology`
+
+warning: unused variable: `rule`
+   --> src/core/semantic_analysis.rs:580:9
+    |
+580 |         rule: &ConfigEntry,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_rule`
+
+warning: unused variable: `ontology`
+   --> src/core/semantic_analysis.rs:581:9
+    |
+581 |         ontology: &LinterOntology,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ontology`
+
+warning: unused variable: `scope_distribution`
+   --> src/core/semantic_analysis.rs:601:13
+    |
+601 |         let scope_distribution = self.analyze_scope_distribution(rules);
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_scope_distribution`
+
+warning: unused variable: `ontology`
+   --> src/core/semantic_analysis.rs:595:9
+    |
+595 |         ontology: &LinterOntology,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ontology`
+
+warning: unused variable: `path`
+   --> src/linters/plugin_architecture.rs:154:51
+    |
+154 |     pub fn load_plugins_from_directory(&mut self, path: &Path) -> Result<()> {
+    |                                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_path`
+
+warning: unused variable: `key`
+   --> src/performance/optimizations.rs:227:30
+    |
+227 |     fn get_from_cache(&self, key: &str) -> Option<ConfigEntry> {
+    |                              ^^^ help: if this is intentional, prefix it with an underscore: `_key`
+
+warning: unused variable: `key`
+   --> src/performance/optimizations.rs:232:28
+    |
+232 |     fn add_to_cache(&self, key: String, entry: ConfigEntry) {
+    |                            ^^^ help: if this is intentional, prefix it with an underscore: `_key`
+
+warning: unused variable: `entry`
+   --> src/performance/optimizations.rs:232:41
+    |
+232 |     fn add_to_cache(&self, key: String, entry: ConfigEntry) {
+    |                                         ^^^^^ help: if this is intentional, prefix it with an underscore: `_entry`
+
+warning: unused variable: `key`
+   --> src/performance/optimizations.rs:253:36
+    |
+253 |     fn get_rules_from_cache(&self, key: &str) -> Option<Vec<RuleMatch>> {
+    |                                    ^^^ help: if this is intentional, prefix it with an underscore: `_key`
+
+warning: unused variable: `key`
+   --> src/performance/optimizations.rs:258:34
+    |
+258 |     fn add_rules_to_cache(&self, key: String, rules: Vec<RuleMatch>) {
+    |                                  ^^^ help: if this is intentional, prefix it with an underscore: `_key`
+
+warning: unused variable: `rules`
+   --> src/performance/optimizations.rs:258:47
+    |
+258 |     fn add_rules_to_cache(&self, key: String, rules: Vec<RuleMatch>) {
+    |                                               ^^^^^ help: if this is intentional, prefix it with an underscore: `_rules`
+
+warning: unused variable: `config_entries`
+  --> src/performance/mod.rs:77:13
+   |
+77 |         let config_entries = self.processor.process_rules_parallel(rules);
+   |             ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_config_entries`
+
+warning: unused variable: `error`
+  --> src/utils/mod.rs:67:27
+   |
+67 |     pub fn is_recoverable(error: &anyhow::Error) -> bool {
+   |                           ^^^^^ help: if this is intentional, prefix it with an underscore: `_error`
+
+warning: unused variable: `error`
+  --> src/utils/mod.rs:73:29
+   |
+73 |     pub fn suggest_recovery(error: &anyhow::Error) -> Option<String> {
+   |                             ^^^^^ help: if this is intentional, prefix it with an underscore: `_error`
+
+warning: field `scale_invariant_patterns` is never read
+ --> src/core/advanced_similarity.rs:8:5
+  |
+7 | pub struct FractalConfigAnalyzer {
+  |            --------------------- field in this struct
+8 |     scale_invariant_patterns: Vec<FractalPattern>,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: fields `fourier_components`, `dominant_frequencies`, and `harmonic_structure` are never read
+   --> src/core/advanced_similarity.rs:193:5
+    |
+192 | pub struct SpectralRuleAnalyzer {
+    |            -------------------- fields in this struct
+193 |     fourier_components: Vec<f64>,
+    |     ^^^^^^^^^^^^^^^^^^
+194 |     dominant_frequencies: Vec<f64>,
+    |     ^^^^^^^^^^^^^^^^^^^^
+195 |     harmonic_structure: Vec<HarmonicComponent>,
+    |     ^^^^^^^^^^^^^^^^^^
+
+warning: field `entanglement_graph` is never read
+   --> src/core/advanced_similarity.rs:318:5
+    |
+316 | pub struct QuantumRuleState {
+    |            ---------------- field in this struct
+317 |     possible_rules: Vec<(String, f64)>, // (rule_id, probability)
+318 |     entanglement_graph: RuleRelationshipGraph,
+    |     ^^^^^^^^^^^^^^^^^^
+
+warning: fields `nodes` and `edges` are never read
+   --> src/core/advanced_similarity.rs:325:5
+    |
+324 | pub struct RuleRelationshipGraph {
+    |            --------------------- fields in this struct
+325 |     nodes: Vec<String>,
+    |     ^^^^^
+326 |     edges: Vec<(usize, usize, f64)>, // (from, to, weight)
+    |     ^^^^^
+    |
+    = note: `RuleRelationshipGraph` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `spectral_analyzer` and `quantum_state` are never read
+   --> src/core/advanced_similarity.rs:403:5
+    |
+401 | pub struct AdvancedSimilarityAnalyzer {
+    |            -------------------------- fields in this struct
+402 |     fractal_analyzer: FractalConfigAnalyzer,
+403 |     spectral_analyzer: SpectralRuleAnalyzer,
+    |     ^^^^^^^^^^^^^^^^^
+404 |     quantum_state: QuantumRuleState,
+    |     ^^^^^^^^^^^^^
+
+warning: methods `get_patterns_for_input` and `determine_action` are never used
+   --> src/core/rule_extractor.rs:141:8
+    |
+25  | impl RuleExtractor {
+    | ------------------ methods in this implementation
+...
+141 |     fn get_patterns_for_input(&self, _input: &str) -> &[ExtractionPattern] {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+...
+146 |     fn determine_action(&self, _rule_match: &RuleMatch) -> ConfigAction {
+    |        ^^^^^^^^^^^^^^^^
+
+warning: field `relationships` is never read
+  --> src/core/semantic_analysis.rs:10:5
+   |
+8  | pub struct LinterOntology {
+   |            -------------- field in this struct
+9  |     concepts: HashMap<String, OntologyConcept>,
+10 |     relationships: Vec<OntologyRelationship>,
+   |     ^^^^^^^^^^^^^
+
+warning: field `edges` is never read
+   --> src/core/semantic_analysis.rs:339:5
+    |
+337 | pub struct RuleGraph {
+    |            --------- field in this struct
+338 |     nodes: HashMap<String, RuleNode>,
+339 |     edges: Vec<RuleEdge>,
+    |     ^^^^^
+    |
+    = note: `RuleGraph` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: field `clustering_algorithm` is never read
+   --> src/core/semantic_analysis.rs:390:5
+    |
+389 | pub struct ClusteringEngine {
+    |            ---------------- field in this struct
+390 |     clustering_algorithm: ClusteringAlgorithm,
+    |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: field `tree` is never read
+   --> src/core/semantic_analysis.rs:545:5
+    |
+544 | pub struct DecisionTree {
+    |            ------------ field in this struct
+545 |     tree: DecisionNode,
+    |     ^^^^
+
+warning: field `plugin_paths` is never read
+   --> src/linters/plugin_architecture.rs:119:5
+    |
+117 | pub struct PluginManager {
+    |            ------------- field in this struct
+118 |     registry: PluginRegistry,
+119 |     plugin_paths: Vec<String>,
+    |     ^^^^^^^^^^^^
+
+warning: struct `CacheEntry` is never constructed
+  --> src/performance/optimizations.rs:25:8
+   |
+25 | struct CacheEntry<T> {
+   |        ^^^^^^^^^^
+
+warning: methods `evict_oldest_entries` and `evict_oldest_rule_entries` are never used
+   --> src/performance/optimizations.rs:263:8
+    |
+42  | impl OptimizedRuleProcessor {
+    | --------------------------- methods in this implementation
+...
+263 |     fn evict_oldest_entries(&self, _cache: &mut HashMap<String, CacheEntry<ConfigEntry>>) {
+    |        ^^^^^^^^^^^^^^^^^^^^
+...
+277 |     fn evict_oldest_rule_entries(&self, _cache: &mut HashMap<String, CacheEntry<Vec<RuleMatch>>>) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: fields `term`, `progress_bars`, and `conflict_resolver` are never read
+  --> src/ui/enhanced_cli.rs:17:5
+   |
+16 | pub struct EnhancedCliRunner {
+   |            ----------------- fields in this struct
+17 |     term: Term,
+   |     ^^^^
+18 |     progress_bars: MultiProgress,
+   |     ^^^^^^^^^^^^^
+19 |     semantic_analyzer: SemanticAnalyzer,
+20 |     conflict_resolver: ConflictResolver,
+   |     ^^^^^^^^^^^^^^^^^
+
+warning: field `recovery_strategies` is never read
+  --> src/ui/error_recovery.rs:25:5
+   |
+24 | pub struct ErrorRecoveryManager {
+   |            -------------------- field in this struct
+25 |     recovery_strategies: HashMap<String, RecoveryStrategy>,
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: `sandbag` (lib test) generated 88 warnings (run `cargo fix --lib -p sandbag --tests` to apply 29 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.03s
+     Running unittests src/lib.rs (target/debug/deps/sandbag-f5558551854c09ca)
+
+running 77 tests
+test config::conflict_resolution::tests::test_conflict_resolver_creation ... ok
+test config::conflict_resolution::tests::test_conflict_analysis ... ok
+test core::advanced_similarity::tests::test_quantum_state ... ok
+test core::advanced_similarity::tests::test_spectral_analyzer ... ok
+test core::confidence::tests::test_auto_apply_logic ... ok
+test config::conflict_resolution::tests::test_conflict_report ... ok
+test core::advanced_similarity::tests::test_advanced_similarity ... ok
+test core::confidence::tests::test_confidence_calculation ... ok
+test core::confidence::tests::test_confidence_levels ... ok
+test core::semantic_analysis::tests::test_semantic_analyzer_creation ... ok
+test core::similarity::tests::test_jaccard_similarity ... ok
+test core::semantic_analysis::tests::test_rule_semantics_analysis ... ok
+test core::similarity::tests::test_levenshtein_similarity ... ok
+test core::semantic_analysis::tests::test_clustering_engine ... ok
+test core::similarity::tests::test_weighted_similarity ... ok
+test core::advanced_similarity::tests::test_fractal_analyzer ... ok
+test config::manager::tests::test_format_detection ... ok
+test config::manager::tests::test_config_manager_creation ... ok
+test config::manager::tests::test_file_access_check ... ok
+test config::backup::tests::test_backup_creation ... ok
+test config::backup::tests::test_backup_listing ... ok
+test config::backup::tests::test_backup_restore ... ok
+test linters::markdownlint::tests::test_rule_description ... ok
+test linters::markdownlint::tests::test_rule_validation ... ok
+test linters::plugin_architecture::tests::test_plugin_enable_disable ... ok
+test linters::plugin_architecture::tests::test_plugin_manager_creation ... ok
+test linters::markdownlint::tests::test_markdownlint_handler_creation ... ok
+test linters::markdownlint::tests::test_config_files ... ok
+test linters::prettier::tests::test_calculate_confidence ... ok
+test linters::prettier::tests::test_can_handle_prettier_output ... ok
+test linters::markdownlint::tests::test_rule_extraction ... ok
+test linters::prettier::tests::test_extract_context ... ok
+test linters::plugin_architecture::tests::test_rule_extraction_with_plugins ... ok
+test linters::prettier::tests::test_get_configuration_options ... ok
+test linters::prettier::tests::test_extract_rules ... ok
+test linters::prettier::tests::test_suggest_action ... ok
+test linters::prettier::tests::test_prettier_handler_creation ... ok
+test linters::tests::test_linter_factory ... ok
+test linters::prettier::tests::test_extract_rule_id ... ok
+test linters::prettier::tests::test_validate_config ... ok
+test performance::optimizations::tests::test_cache_eviction ... ok
+test performance::optimizations::tests::test_clear_caches ... ok
+test performance::optimizations::tests::test_memory_optimized_similarity ... ok
+test linters::plugin_architecture::tests::test_plugin_registration ... ok
+test performance::optimizations::tests::test_optimized_processor_creation ... ok
+test performance::optimizations::tests::test_parallel_processing ... ok
+test performance::optimizations::tests::test_similarity_caching ... ok
+test performance::tests::test_operation_recording ... ok
+test performance::tests::test_performance_benchmark_creation ... ok
+test performance::optimizations::tests::test_similarity_matrix ... ok
+test performance::tests::test_performance_monitor_creation ... ok
+test performance::tests::test_uptime ... ok
+test ui::enhanced_cli::tests::test_confidence_bar_creation ... ok
+test ui::enhanced_cli::tests::test_enhanced_cli_runner_creation ... ok
+test ui::error_recovery::tests::test_error_recovery_manager_creation ... ok
+test ui::error_recovery::tests::test_max_retries_setting ... ok
+test ui::error_recovery::tests::test_retry_logic ... ok
+test ui::help_system::tests::test_examples ... ok
+test ui::help_system::tests::test_help_system_creation ... ok
+test ui::help_system::tests::test_topic_help ... ok
+test utils::validation::tests::test_is_actionable ... ok
+test utils::validation::tests::test_validate_config_entry ... ok
+test utils::validation::tests::test_validate_rule_id ... ok
+test utils::validation::tests::test_validate_rule_input ... ok
+test utils::validation::tests::test_validate_rule_match ... ok
+test linters::eslint::tests::test_suggest_action ... ok
+
+thread 'linters::eslint::tests::test_calculate_confidence' panicked at src/linters/eslint.rs:328:9:
+assertion failed: confidence > 0.8
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'linters::eslint::tests::test_can_handle_eslint_output' panicked at src/linters/eslint.rs:271:9:
+assertion failed: handler.can_handle("1:10 error no-unused-vars 'x' is assigned a value but never used")
+test linters::eslint::tests::test_calculate_confidence ... FAILED
+test linters::eslint::tests::test_can_handle_eslint_output ... FAILED
+
+thread 'linters::eslint::tests::test_extract_rule_id' panicked at src/linters/eslint.rs:284:9:
+assertion `left == right` failed
+  left: None
+ right: Some("no-unused-vars")
+test linters::eslint::tests::test_extract_rule_id ... FAILED
+
+thread 'linters::eslint::tests::test_extract_severity' panicked at src/linters/eslint.rs:301:9:
+assertion `left == right` failed
+  left: None
+ right: Some(Error)
+
+thread 'linters::eslint::tests::test_extract_rules' panicked at src/linters/eslint.rs:314:9:
+assertion `left == right` failed
+  left: 0
+ right: 2
+test linters::eslint::tests::test_extract_severity ... FAILED
+test linters::eslint::tests::test_extract_rules ... FAILED
+test linters::eslint::tests::test_eslint_handler_creation ... ok
+test linters::tests::test_create_handler ... ok
+test linters::tests::test_extract_rules ... ok
+
+thread 'linters::tests::test_find_handler' panicked at src/linters/mod.rs:185:9:
+assertion failed: handler.is_some()
+test linters::tests::test_find_handler ... FAILED
+test linters::tests::test_supported_linters ... ok
+test linters::tests::test_linter_registry_creation ... ok
+
+failures:
+
+failures:
+    linters::eslint::tests::test_calculate_confidence
+    linters::eslint::tests::test_can_handle_eslint_output
+    linters::eslint::tests::test_extract_rule_id
+    linters::eslint::tests::test_extract_rules
+    linters::eslint::tests::test_extract_severity
+    linters::tests::test_find_handler
+
+test result: FAILED. 71 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+error: test failed, to rerun pass `--lib`

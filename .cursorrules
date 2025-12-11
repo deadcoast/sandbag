@@ -1,0 +1,109 @@
+# CURSORRULES
+
+## System Reference Files
+
+[.cursorrules](.cursorrules)
+  [Scratchpad](.cursorrules|## Scratchpad) - Living Scratchpad for Tasklist
+  [Root-MOC](00_MOC.md) - Comprehensive Project Index
+  [Docs-MOC](docs/00_MOC.md) - Documentation Hub Index
+  [System-Architecture](docs/architecture.md) - Project Architecture
+  [Implementation](docs/implementation.md) - Project Implementations
+  [Mathematics](docs/mathematics.md) - Mathematical Implementations
+  [Dev-Notes](docs/dev-notes.md) - Development Context and Workflow
+
+## Workflow & Instructions
+
+1. Context First: Provide a context check in (docs/)
+2. Architecture Alignment: Ensure all implementations align with specifications
+3. Incremental Implementation: Use `MCP` tool `Sequential Thinking` or `server-sequential-thinking`
+4. Knowledge Management: Document Tasklist in `Scratchpad`
+
+5. STANDARDS AND GUIDELINES:
+   1. Review .cursorrules for current task and plan implementation steps
+   2. Review System-Architecture for existing implementations
+   3. Take action to complete the task
+   4. Review for missing implementations required by recent changes
+   5. Identify implementation gaps and plan necessary steps
+   6. Update System-Architecture with changes
+   7. Update Scratchpad Tasklistwith progress
+
+6. **`Scratchpad` Usage**: Maintain a task list in this file following the format:
+
+   ```markdown
+   ## Scratchpad
+
+   [X] Task 1
+   [ ] Task 2
+   ```
+
+   Update progress markers as subtasks are completed. Use the Scratchpad to
+   maintain implementation context and track progress.
+
+---
+
+## `Scratchpad`
+
+Gaps vs documentation (no corner cutting)
+- [ ] Probabilistic/Bayesian extractor:
+  - The docs specify Bayes-based inference and evidence vectors. Current code
+  uses regex with weighted heuristics; no true Bayesian posterior, no learned
+  priors, no evidence vectorization.
+
+- [ ] Semantic configuration analysis: Ontology types exist, but extraction,
+  scoring, and decision/graph algorithms are mostly placeholders; no robust
+  semantic parsing of config files yet.
+
+- [ ] AST differential and semantic integration:
+  There’s an AST type and hook points, but no “differential AST analysis”
+  engine; parser.rs/writer.rs are still minimal stubs without full multi-format
+  AST transforms or preservation of comments/structure.
+
+- [ ] Learning/optimization:
+  No Markov/NN/RL integrations; no gradient-learned weights; no predictive
+  optimization loop.
+
+- [ ] Topological/category/information-theoretic sections:
+  Not implemented. Only conceptual placeholders exist in code (none of the
+  manifold/category theory/compression logic is present).
+
+- [ ] Quantum/fractal/spectral: APIs and tests exist, but they are simplified,
+  feature-gated, and largely illustrative; not production-grade analyses.
+
+- [ ] CLI parity with the docs’ code snippets:
+  The specific clap-based example in the docs differs from actual CLI structure
+  (our CLI is in src/ui, not a direct clap derive matching the docs snippet).
+  Functionally similar, but not line-by-line identical.
+
+- [ ] Parser/writer completeness:
+  Multi-format parsing/serialization is not implemented in full; JSON/YAML
+  detection logic is simple; writer is a stub.
+
+### What to implement to fully adhere
+
+- [ ] Implement a Bayesian rule extractor:
+Define evidence vector creation (n-grams, positions, context tokens, file type,
+historical frequency).
+
+- [ ] Train/estimate priors and likelihoods; compute posteriors; replace or augment
+  current heuristic confidence.
+
+- [ ] Build real semantic config parsing:
+
+Parse config files into typed semantic nodes; populate ontology; compute
+semantic vectors and cluster metrics; use them in recommendations/decisions.
+
+- [ ] Implement AST differential analysis:
+A calculus-like layer computing semantic gradients and structural deltas;
+target insertion points preserving formatting/comments.
+
+- [ ] Add learning modules:
+Weight learning for similarity (gradient descent), predictive models for next
+changes (Markov/ML), optional RL for user feedback.
+
+- [ ] Add mathematical extras where committed by docs:
+Info theory metrics for compression/entropy; basic manifold distance;
+category-morphism transforms (even minimal viable versions).
+
+- [ ] Finalize multi-format parsers/writers:
+JSON/YAML/TOML/INI adapters with round-trip fidelity; conflict resolution
+policies as specified.

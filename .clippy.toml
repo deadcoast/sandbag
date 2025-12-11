@@ -1,0 +1,30 @@
+# Clippy configuration tuned for this project
+# Note: Lint levels are set in src/lib.rs. This file adjusts thresholds and behavior.
+
+# Treat all wildcard imports as noteworthy
+warn-on-all-wildcard-imports = true
+
+# Increase thresholds to avoid noisy suggestions for complex algorithms
+cognitive-complexity-threshold = 35
+type-complexity-threshold = 600
+too-many-lines-threshold = 600
+
+# Recognize valid identifiers in docs without warning
+# e.g., linter rule IDs and common acronyms used in this project
+doc-valid-idents = [
+  "MD033",
+  "MD041",
+  "MD013",
+  "ESLint",
+  "JSON",
+  "YAML",
+  "TOML",
+  "CLI",
+]
+
+# Allow short prefixes often used across code and docs
+allowed-prefixes = [
+  "MD",
+  "UI",
+  "CLI",
+]
